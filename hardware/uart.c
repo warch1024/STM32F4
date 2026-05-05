@@ -79,12 +79,11 @@ void USART1_IRQHandler(void)    // 串口1的中断服务函数
     {
         // 处理接收中断
         uint8_t recv_byte = USART_ReceiveData(USART1); // 接收字节
-        if (USE_TRIE_OPTIMIZATION){
+        #if defined(USE_TRIE_OPTIMIZATION) && (USE_TRIE_OPTIMIZATION)
             Trie_Match_Byte(recv_byte);
-        }
-        else{
+        #else
             DFA_Match_Byte(recv_byte);// 收到字节后，将字节添加到事件队列中        
-        }
+        #endif
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);  // 清除接收中断标志位
     }
 }

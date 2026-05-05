@@ -111,7 +111,7 @@ void DFA_Match_Byte(uint8_t ch)
  *********************** Trie事件解析框架****************************************
  *******************************************************************************
  */
-#if defined(USE_TRIE_OPTIMIZATION)      //编译开关，是否使用Trie树解析命令
+#if defined(USE_TRIE_OPTIMIZATION) && (USE_TRIE_OPTIMIZATION)      //编译开关，是否使用Trie树解析命令
 // 创建新节点
 
 static trie_node_t* trie_create_node(void) {
@@ -195,7 +195,7 @@ void Trie_Match_Byte(uint8_t ch) {
 #endif
 
 void trie_init(void) {
-#if defined(USE_TRIE_OPTIMIZATION)
+#if defined(USE_TRIE_OPTIMIZATION) && (USE_TRIE_OPTIMIZATION)
     // 初始化Trie树根节点
     trie_root = trie_create_node();
     
