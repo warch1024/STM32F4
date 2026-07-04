@@ -10,6 +10,7 @@
 .\objects\system_stm32f4xx.o: .\RTE\RTE_Components.h
 .\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_exti.h
 .\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h
+.\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_flash.h
 .\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_iwdg.h
 .\objects\system_stm32f4xx.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_pwr.h

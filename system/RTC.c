@@ -5,7 +5,7 @@
 #include "event_handlers.h"
 
 #define RTC_INIT_KEY 0x000115211
-#define ALARM_CYCLE 30 // 闹钟周期，单位：次
+#define ALARM_CYCLE 5 // 闹钟周期，单位：次
 
 //用于修改日期时间和闹钟时间
 RTC_DateTypeDef submit_date = {.RTC_Year = 0x26, .RTC_Month = 0x05, .RTC_Date = 0x08, .RTC_WeekDay = 0x05};
@@ -82,10 +82,18 @@ void RTC_Alarm_IRQHandler(void){
     }
 }
 
-void rtc_alarm_set(RTC_AlarmTypeDef RTC_AlarmStructure){
-    RTC_AlarmCmd(RTC_Alarm_A, DISABLE);
+int8_t rtc_alarm_set(RTC_AlarmTypeDef RTC_AlarmStructure){
+    ErrorStatus err;
+    err = RTC_AlarmCmd(RTC_Alarm_A, DISABLE);
+    if(err != SUCCESS){
+        return -1;
+    }
     RTC_SetAlarm (RTC_Format_BCD, RTC_Alarm_A, &RTC_AlarmStructure);
-    RTC_AlarmCmd(RTC_Alarm_A, ENABLE);
+    err = RTC_AlarmCmd(RTC_Alarm_A, ENABLE);
+    if(err != SUCCESS){
+        return -2;
+    }
+    return 1;
 }
 void rtc_alarm_disable(void){
     RTC_AlarmCmd(RTC_Alarm_A, DISABLE);

@@ -11,7 +11,7 @@ extern RTC_AlarmTypeDef submit_alarm;
 
 void rtc_init(void);
 void rtc_alarm_init(void);
-void rtc_alarm_set(RTC_AlarmTypeDef RTC_AlarmStructure);
+int8_t rtc_alarm_set(RTC_AlarmTypeDef RTC_AlarmStructure);
 void rtc_alarm_disable(void);
 
 void rtc_print_current_date_time(void);

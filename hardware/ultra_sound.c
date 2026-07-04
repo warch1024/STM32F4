@@ -51,3 +51,11 @@ int32_t ultra_sound_measure(void){
     // 返回超声波传感器距离
     return distance;
 }
+
+
+//保存举例数据
+void ultra_sound_save_to_flash(uint32_t distance){
+    // 保存举例数据
+    // 例如：将距离保存到EEPROM
+    // ...
+}

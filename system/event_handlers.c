@@ -208,8 +208,15 @@ void set_alarm(int param_val){
     //写入秘钥,等待继续
     RTC_WaitForSynchro();
     //5.设置闹钟
-    rtc_alarm_set(submit_alarm);
-    printf("set_alarm success\r\n");
+    int8_t ret = rtc_alarm_set(submit_alarm);
+    if(ret == 1){
+        printf("set_alarm success:  %hhx:%hhx:%hhx\r\n", 
+            submit_alarm.RTC_AlarmTime.RTC_Hours, submit_alarm.RTC_AlarmTime.RTC_Minutes, 
+            submit_alarm.RTC_AlarmTime.RTC_Seconds);
+           }
+    else{
+        printf("set_alarm failed, ret:%d\r\n", ret);
+    }
 }
 //闹钟处理函数
 void alarm_handler(int param_val){
@@ -223,13 +230,13 @@ void alarm_handler(int param_val){
         delay_ms(100);
         LED1_OFF
         BEEP1_OFF
-        delay_ms(50);
-
+        delay_ms(100);
         LED1_ON
         BEEP1_ON
         delay_ms(100);
         LED1_OFF
         BEEP1_OFF
+        delay_ms(2000);
         delay_ms(2000);
     }
 }

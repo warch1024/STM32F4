@@ -10,8 +10,9 @@
 .\objects\stm32f4xx_exti.o: .\RTE\Device\STM32F407ZE\stm32f4xx_conf.h
 .\objects\stm32f4xx_exti.o: .\RTE\RTE_Components.h
 .\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_exti.h
-.\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_gpio.h
+.\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_flash.h
 .\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h
+.\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_iwdg.h
 .\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_pwr.h
 .\objects\stm32f4xx_exti.o: D:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_rcc.h
