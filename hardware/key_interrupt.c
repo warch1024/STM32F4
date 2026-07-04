@@ -4,6 +4,7 @@
 #include "stm32f4xx_syscfg.h"
 #include "led.h"
 #include "tools.h"
+#include "systick.h"
 
 uint8_t KEY1_State = 0;
 uint8_t KEY2_State = 0;
@@ -99,6 +100,7 @@ void EXTI0_IRQHandler(void)
         KEY2_State = 0;
         KEY3_State = 0;
         KEY4_State = 0;
+        delay_ms(150);
         EXTI_ClearITPendingBit(EXTI_Line0);
     }
 }
@@ -111,6 +113,7 @@ void EXTI2_IRQHandler(void)
         KEY2_State = 1;
         KEY3_State = 0;
         KEY4_State = 0;
+        delay_ms(150);
         EXTI_ClearITPendingBit(EXTI_Line2);
     }
 }
@@ -123,6 +126,7 @@ void EXTI3_IRQHandler(void)
         KEY2_State = 0;
         KEY3_State = 1;
         KEY4_State = 0;
+        delay_ms(150);
         EXTI_ClearITPendingBit(EXTI_Line3);
     }
 }
@@ -135,6 +139,7 @@ void EXTI4_IRQHandler(void)
         KEY2_State = 0;
         KEY3_State = 0;
         KEY4_State = 1;
+        delay_ms(150);
         EXTI_ClearITPendingBit(EXTI_Line4);
     }
 }

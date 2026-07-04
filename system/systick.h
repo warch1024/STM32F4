@@ -23,6 +23,17 @@ static inline void delay_us(uint32_t us)
     while((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0); //等待计数器到0
     SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk; //关闭计数器
 }
+// 支持 0.1μs 精度（假设 21MHz）
+static inline void delay_100ns(uint32_t ns_100) {
+    // ns_100 = 1 → 0.1μs, ns_100 = 25 → 2.5μs
+    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+    SysTick->LOAD = (21 * ns_100) / 10 - 1;  // 2.1 * ns_100 - 1
+    SysTick->VAL = 0;
+    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+    while((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0);
+    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+}
+// 使用：delay_100ns(2) → 约 0.2μs
 #endif
 
 

@@ -62,7 +62,7 @@ ARM Macro Assembler    Page 1
    38 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    39 00000000         ; </h>
    40 00000000         
-   41 00000000 00000400 
+   41 00000000 00004000 
 
 
 
@@ -70,25 +70,25 @@ ARM Macro Assembler    Page 2
 
 
                        Stack_Size
-                               EQU              0x00000400
+                               EQU              0x00004000  ;16KB栈
    42 00000000         
    43 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
 =3
    44 00000000         Stack_Mem
                                SPACE            Stack_Size
-   45 00000400         __initial_sp
-   46 00000400         
-   47 00000400         
-   48 00000400         ; <h> Heap Configuration
-   49 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   50 00000400         ; </h>
-   51 00000400         
-   52 00000400 00010000 
+   45 00004000         __initial_sp
+   46 00004000         
+   47 00004000         
+   48 00004000         ; <h> Heap Configuration
+   49 00004000         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   50 00004000         ; </h>
+   51 00004000         
+   52 00004000 00010000 
                        Heap_Size
                                EQU              0x00010000  ; 设置堆大小�
                                                             �64KB
-   53 00000400         
-   54 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   53 00004000         
+   54 00004000                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    55 00000000         __heap_base
    56 00000000         Heap_Mem
@@ -865,11 +865,12 @@ ARM Macro Assembler    Page 14
               00000000 
               00000000 
               00000000 
-              00000400 
+              00004000 
               00010000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_stm32f40_41xxx.d -o.\objects\startup_stm32f40
+<<<<<<< HEAD
 _41xxx.o -IE:\yueqian_projects\STM32-projects\interrupt\RTE -IE:\yueqian_projec
 ts\STM32-projects\interrupt\RTE\Device\STM32F407ZE -ID:\ProgramFiles\Keil_v5\AR
 M\PACK\ARM\CMSIS\4.2.0\CMSIS\Include -ID:\ProgramFiles\Keil_v5\ARM\PACK\Keil\ST
@@ -878,6 +879,16 @@ M32F4xx_DFP\1.0.8\Device\Include -ID:\ProgramFiles\Keil_v5\ARM\PACK\Keil\STM32F
 14" --predefine="_RTE_ SETA 1" --predefine="STM32F40_41xxx SETA 1" --list=.\lis
 tings\startup_stm32f40_41xxx.lst RTE\Device\STM32F407ZE\startup_stm32f40_41xxx.
 s
+=======
+_41xxx.o -Ie:\yueqian_projects\STM32-projects\interrupt_no_bootloader\RTE -Ie:\
+yueqian_projects\STM32-projects\interrupt_no_bootloader\RTE\Device\STM32F407ZE 
+-ID:\ProgramFiles\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include -ID:\ProgramFi
+les\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include -ID:\ProgramFiles\
+Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc --predefi
+ne="__UVISION_VERSION SETA 514" --predefine="_RTE_ SETA 1" --predefine="STM32F4
+0_41xxx SETA 1" --list=.\listings\startup_stm32f40_41xxx.lst RTE\Device\STM32F4
+07ZE\startup_stm32f40_41xxx.s
+>>>>>>> 18fb89186dfa4723872031c82faa145d586b3950
 
 
 
@@ -901,7 +912,7 @@ Symbol: Stack_Mem
       At line 423 in file RTE\Device\STM32F407ZE\startup_stm32f40_41xxx.s
       At line 425 in file RTE\Device\STM32F407ZE\startup_stm32f40_41xxx.s
 
-__initial_sp 00000400
+__initial_sp 00004000
 
 Symbol: __initial_sp
    Definitions
@@ -1941,7 +1952,7 @@ Symbol: Heap_Size
       At line 56 in file RTE\Device\STM32F407ZE\startup_stm32f40_41xxx.s
       At line 424 in file RTE\Device\STM32F407ZE\startup_stm32f40_41xxx.s
 
-Stack_Size 00000400
+Stack_Size 00004000
 
 Symbol: Stack_Size
    Definitions

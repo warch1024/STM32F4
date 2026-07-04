@@ -23,6 +23,13 @@
 #include "IWDG.h"
 #include "RTC.h"
 #include "Flash.h"
+#include "eeprom.h"
+#include "oled_iic.h"
+#include "spi_flash.h"
+#include "SPI.h"
+#include "RC522.h"
+#include "rc522_app.h"
+#include "SPI_LCD.h"
 
 
 
@@ -67,6 +74,9 @@ void init(void){
     rtc_init();//初始化RTC
     rtc_alarm_init();
     Flash_Init();
+    ADC_common_init();
+    impedance_ADC_init();
+    light_sensor_ADC_init();
     trie_init();
 }
 
@@ -81,10 +91,12 @@ int main(){
         // radar_distance_show();
         // radar_distance_beeping();
         if(KEY1_State == 1){
+            // oled_demo();
             while(usart1_send_byte('X') != 1);
             while(usart1_send_string(str) != 1);
             printf("KEY1 Pressed\r\n");
             flash_test();
+            adc_test();
             clear_key_state();//清除按键状态
         }
         if(KEY2_State == 1){
@@ -94,8 +106,14 @@ int main(){
             else{
                 LED2_ON;
             }
+            light_sensor_regular_light();
+            
             // IWDG_CheckResetFlag();//检查独立看门狗是否复位了CPU
             rtc_print_current_date_time();//打印当前日期和时间
+            // spi_flash_record_TH_qury();
+            // RC522_Main_app(0);//验证模式
+            
+            
             clear_key_state();//清除按键状态
         }
         if(KEY3_State == 1){
@@ -110,6 +128,7 @@ int main(){
             clear_key_state();//清除按键状态
         }
         if(KEY4_State == 1){
+            spi_flash_force_write();
             int8_t ret = temperature_humidity_sensor_check();
             if(ret == 0){
                 printf("temperature_humidity_sensor_check success\n");
